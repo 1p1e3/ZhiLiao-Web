@@ -39,11 +39,21 @@
             </div>
         </div>
         <hr>
+        <!-- 回答列表 -->
+        <div v-infinite-scroll="load">
+            <AnswerCard v-for="i in count" :key="i" class="mt"/>
+        </div>
+        
     </div>
 </template>
 
 <script setup lang="ts">
-
+    import AnswerCard from '@/components/AnswerCard.vue'
+    import { ref } from 'vue'
+    const count = ref(0)
+    const load = () => {
+        count.value += 2
+    }
 </script>
 
 <style>
